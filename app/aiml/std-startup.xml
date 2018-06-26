@@ -12,6 +12,7 @@
         <!--<learn>是一个aiml文件-->
         <template>
             <learn>D:/WorkSpace/pyCharm/aiserver/app/aiml/basic_chat.aiml</learn>
+            <learn>D:/WorkSpace/pyCharm/aiserver/app/aiml/cms_chat.aiml</learn>
             <!--<learn>/Users/wangxiaocao/PycharmProjects/wechat_chatbot/resources/greeting.aiml</learn>-->
             <!--在这下面你能添加更多的aiml文件-->
             <!--<learn>more_aiml.aiml</learn>-->

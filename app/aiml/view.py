@@ -2,7 +2,8 @@ from flask import Blueprint, json
 from .processing import AilmProcess
 
 aiml = Blueprint('aiml', __name__)
-aiKernel = AilmProcess.get_ai_kernel()
+process = AilmProcess()
+
 
 @aiml.route('/test')
 def test():
@@ -11,5 +12,4 @@ def test():
 
 @aiml.route('/ask')
 def ask():
-    print(aiKernel.respond('HELLO'))
-    # return json.dumps({'code': 0, 'text': process.get_ai_kernel_resp('hi')}, ensure_ascii=False)
+    return json.dumps({'code': 0, 'text': process.respond('你是 猪')}, ensure_ascii=False)

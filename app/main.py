@@ -11,8 +11,6 @@ app.register_blueprint(ocr, url_prefix='/ai/py/ocr')
 app.register_blueprint(aiml, url_prefix='/ai/py/aiml')
 
 
-
-
 @app.route('/')
 def root():
     return "hello"

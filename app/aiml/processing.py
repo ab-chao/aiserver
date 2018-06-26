@@ -1,19 +1,21 @@
-import aiml
+from app.aiml.core import Kernel
 import os
 
 
-class AilmProcess(object):
+class AilmProcess(Kernel):
 
-    @classmethod
-    def get_ai_kernel(cls):
-        aiKernel = aiml.Kernel()
-        if os.path.isfile("bot_brain.brn"):
-            aiKernel.bootstrap(brainFile="bot_brain.brn")
+    CURR_PATH = os.path.dirname(__file__) + '\\'
+
+    def __init__(self):
+        Kernel.__init__(self)
+        if os.path.isfile(self.CURR_PATH + "bot_brain.brn"):
+            self.bootstrap(brainFile=self.CURR_PATH + "bot_brain.brn")
         else:
-            aiKernel.bootstrap(learnFiles="./aiml/std-startup.xml", commands="load aiml b")
-            aiKernel.saveBrain("bot_brain.brn")
-        return aiKernel
+            self.bootstrap(learnFiles=self.CURR_PATH + "std-startup.xml", commands="load aiml b")
+            self.saveBrain(self.CURR_PATH + "bot_brain.brn")
 
-    # @classmethod
-    # def get_ai_kernel_resp(cls, text):
-    #     return aiKernel.respond(text)
+
+if __name__ == "__main__":
+    bot = AilmProcess()
+    print(bot.respond('你是 猪'))
+    # print(os.path.dirname(__file__))
