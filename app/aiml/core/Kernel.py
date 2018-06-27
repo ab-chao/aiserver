@@ -344,8 +344,6 @@ class Kernel:
                 l_key = list(key)
                 l_key[0] = " ".join(jieba.cut(key[0]))
                 key = tuple(l_key)
-
-                # tem[2][2] = " ".join(jieba.cut(tem[2][2]))
                 # cyl .aiml????????brain????? end
                 self._brain.add(key,tem)
             # Parsing was successful.

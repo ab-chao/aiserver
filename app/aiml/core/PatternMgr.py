@@ -150,12 +150,12 @@ class PatternMgr:
         # *input_ = re.sub(self._puncStripRE, " ", input_)
         # 原来代码 end #################################################################################
 
-        # 使用中文分词处理输入语句 start #################################################################
-        print('分词前：' + pattern)
+        # cyl 使用中文分词处理输入语句 start #################################################################
+        # print('分词前：' + pattern)
         words = jieba.cut(pattern)
         input_ = " ".join(words)
-        print('分词后：' + input_)
-        # 使用中文分词处理输入语句 end ###################################################################
+        # print('分词后：' + input_)
+        # cyl 使用中文分词处理输入语句 end ###################################################################
 
         if that.strip() == u"": that = u"ULTRABOGUSDUMMYTHAT" # 'that' must never be empty
         thatInput = that.upper()
@@ -185,11 +185,11 @@ class PatternMgr:
         # input_ = pattern.upper()
 
         # cyl 使用中文分词处理输入语句 start #################################################################
-        print('分词前：' + pattern)
+        # print('分词前：' + pattern)
         words = jieba.cut(pattern)
         input_ = " ".join(words)
         pattern = input_
-        print('分词后：' + input_)
+        # print('分词后：' + input_)
         # cyl 使用中文分词处理输入语句 end ###################################################################
 
         input_ = re.sub(self._puncStripRE, " ", input_)

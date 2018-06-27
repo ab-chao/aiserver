@@ -18,6 +18,13 @@ class AilmProcess(Kernel):
 
 if __name__ == "__main__":
     bot = AilmProcess()
-    print('机器人回答：' + bot.respond('你是猪'))
+    print('模拟输入：你好啊，机器人')
+    print('机器人回答：' + bot.respond('你好啊，机器人'))
+    print('模拟输入：有一次我吃了好多')
+    print('机器人回答：' + bot.respond('有一次我吃了好多'))
+    print('模拟输入：我有一只狗叫旺财')
+    print('机器人回答：' + bot.respond('我有一只狗叫旺财'))
+    print('模拟输入：我的狗叫什么？')
+    print('机器人回答：' + bot.respond('我的狗叫什么？'))
 
     # print(os.path.dirname(__file__))
