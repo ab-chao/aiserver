@@ -6,7 +6,7 @@
 
         <!--匹配用户输入的模式-->
         <!--如果用户输入"LOADAIMLB"-->
-        <pattern>LOAD AIML B</pattern>
+        <pattern>ABC</pattern>
 
         <!--<Template>用来响应模式-->
         <!--<learn>是一个aiml文件-->

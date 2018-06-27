@@ -11,6 +11,9 @@ import pprint
 import re
 import string
 import sys
+# 后导入的包 start ###################################
+import jieba
+# 后导入的包 end #####################################
 
 from .constants import *
 
@@ -140,10 +143,20 @@ class PatternMgr:
         """
         if len(pattern) == 0:
             return None
+        # 原来代码 start ###############################################################################
         # Mutilate the input.  Remove all punctuation and convert the
         # text to all caps.
-        input_ = pattern.upper()
-        input_ = re.sub(self._puncStripRE, " ", input_)
+        # *input_ = pattern.upper()
+        # *input_ = re.sub(self._puncStripRE, " ", input_)
+        # 原来代码 end #################################################################################
+
+        # 使用中文分词处理输入语句 start #################################################################
+        print('分词前：' + pattern)
+        words = jieba.cut(pattern)
+        input_ = " ".join(words)
+        print('分词后：' + input_)
+        # 使用中文分词处理输入语句 end ###################################################################
+
         if that.strip() == u"": that = u"ULTRABOGUSDUMMYTHAT" # 'that' must never be empty
         thatInput = that.upper()
         thatInput = re.sub(self._puncStripRE, " ", thatInput)
@@ -151,7 +164,7 @@ class PatternMgr:
         if topic.strip() == u"": topic = u"ULTRABOGUSDUMMYTOPIC" # 'topic' must never be empty
         topicInput = topic.upper()
         topicInput = re.sub(self._puncStripRE, " ", topicInput)
-        
+
         # Pass the input off to the recursive call
         patMatch, template = self._match(input_.split(), thatInput.split(), topicInput.split(), self._root)
         return template
@@ -167,7 +180,18 @@ class PatternMgr:
         """
         # Mutilate the input.  Remove all punctuation and convert the
         # text to all caps.
-        input_ = pattern.upper()
+
+        # 取消原本的转为大写的操作
+        # input_ = pattern.upper()
+
+        # cyl 使用中文分词处理输入语句 start #################################################################
+        print('分词前：' + pattern)
+        words = jieba.cut(pattern)
+        input_ = " ".join(words)
+        pattern = input_
+        print('分词后：' + input_)
+        # cyl 使用中文分词处理输入语句 end ###################################################################
+
         input_ = re.sub(self._puncStripRE, " ", input_)
         input_ = re.sub(self._whitespaceRE, " ", input_)
         if that.strip() == u"": that = u"ULTRABOGUSDUMMYTHAT" # 'that' must never be empty

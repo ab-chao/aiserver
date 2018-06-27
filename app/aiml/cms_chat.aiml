@@ -21,9 +21,9 @@
     </category>
 
     <category>
-        <pattern>我是*</pattern>
+        <pattern>你好，我是中国人</pattern>
         <template>
-            你好<star/>
+            你好,我是机器人
         </template>
     </category>
 

@@ -25,7 +25,9 @@ from . import Utils
 from .AimlParser import create_parser
 from .PatternMgr import PatternMgr
 from .WordSub import WordSub
-
+# cyl ????? start
+import jieba
+# cyl ????? end
 
 
 def msg_encoder( encoding=None ):
@@ -338,6 +340,13 @@ class Kernel:
                 continue
             # store the pattern/template pairs in the PatternMgr.
             for key,tem in handler.categories.items():
+                # cyl .aiml????????brain????? start
+                l_key = list(key)
+                l_key[0] = " ".join(jieba.cut(key[0]))
+                key = tuple(l_key)
+
+                # tem[2][2] = " ".join(jieba.cut(tem[2][2]))
+                # cyl .aiml????????brain????? end
                 self._brain.add(key,tem)
             # Parsing was successful.
             if self._verboseMode:
